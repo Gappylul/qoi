@@ -1,0 +1,48 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "Gappylul/qoi"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn decode(BytesView) -> Image raise QoiError
+
+pub fn encode(Image) -> Bytes raise QoiError
+
+// Errors
+#derive(Eq, @debug.Debug)
+pub(all) suberror QoiError {
+  TooShort
+  BadMagic
+  BadHeader(String)
+  PixelLengthMismatch(expected~ : Int32, actual~ : Int32)
+  MissingEndMarker
+}
+
+// Types and methods
+#derive(Eq, @debug.Debug)
+pub(all) enum Channels {
+  Rgb
+  Rgba
+}
+pub fn Channels::count(Self) -> Int32
+
+#derive(Eq, @debug.Debug)
+pub(all) enum Colorspace {
+  Srgb
+  Linear
+}
+
+#derive(Eq, @debug.Debug)
+pub(all) struct Image {
+  width : Int32
+  height : Int32
+  channels : Channels
+  colorspace : Colorspace
+  pixels : Bytes
+}
+
+// Type aliases
+
+// Traits

@@ -1,0 +1,5 @@
+// import {
+//   "Gappylul/qoi" @lib,
+// }
+
+pkgtype(kind: "executable")
